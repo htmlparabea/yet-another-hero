@@ -1,4 +1,5 @@
 import { SpriteCollection } from "./views/sprite-collection.js";
+import { StartScreen } from "./views/start-screen.js";
 
 /**
  * @public
@@ -15,16 +16,25 @@ export class Game {
     constructor(config, p) {
         /**
          * @private
+         * @readonly
          * @description Game configuration.
          * @type {object}
          */
         this.config = config;
         /**
          * @private
+         * @readonly
          * @description Instance of p5.
          * @type {object}
          */
         this.p = p;
+        /**
+         * @private
+         * @readonly
+         * @description Collection of sprites.
+         * @type {SpriteCollection}
+         */
+        this.sprites = new SpriteCollection(config.sprites, p);
         /**
          * @private
          * @description Font.
@@ -33,20 +43,10 @@ export class Game {
         this.font = null;
         /**
          * @private
-         * @description Collection of sprites.
-         * @type {SpriteCollection}
-         */
-        this.sprites = new SpriteCollection(config.sprites, p);
-        /**
-         * @private
          * @description Collection of screens.
          * @type {object}
          */
-        this.screens = {
-            "start": null,
-            "hero": null,
-            "board": null
-        };
+        this.screens = {};
         /**
          * @private
          * @description Current screen.
@@ -68,6 +68,9 @@ export class Game {
     preload() {
         this.font = this.p.loadFont(`../fonts/${this.config.font}`);
         this.sprites.preload();
+
+        this.screens[StartScreen.ID] = new StartScreen(this);
+        this.currentScreen = this.screens[StartScreen.ID];
     }
 
     /**
@@ -86,6 +89,8 @@ export class Game {
      * @description Called when a mouse click occurs.
      */
     mouseClicked() {
+        if (!this.currentScreen) return;
+
         const x = this.p.mouseX;
         const y = this.p.mouseY;
         this.currentScreen.mouseClicked(x, y);
@@ -96,6 +101,8 @@ export class Game {
      * @description Called when a key is pressed.
      */
     keyPressed() {
+        if (!this.currentScreen) return;
+
         const key = this.p.key;
         this.currentScreen.keyPressed(key);
     }
@@ -105,9 +112,30 @@ export class Game {
      * @description Called when the screen is drawn.
      */
     draw() {
+        this.p.background(0);
+        if (!this.currentScreen) return;
+
         let tmp = (++this.frame) % 100;
         this.frame = tmp < 100 ? tmp : 0;
         this.currentScreen.draw(this.frame);
+    }
+
+    /**
+     * @public
+     * @description Gets the instance of p5.js.
+     * @returns {object} Instance of p5.
+     */
+    getP5() {
+        return this.p;
+    }
+
+    /**
+     * @public
+     * @description Gets the collection of sprites.
+     * @returns {SpriteCollection} Collection of sprites.
+     */
+    getSprites() {
+        return this.sprites;
     }
 
     /**
