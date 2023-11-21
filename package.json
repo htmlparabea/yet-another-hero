@@ -1,0 +1,20 @@
+{
+  "name": "yet-another-hero",
+  "version": "1.0.0",
+  "description": "A simple retro game build with JavaScript.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "p5": "^1.8.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  }
+}

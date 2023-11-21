@@ -1,5 +1,7 @@
+import { HeroFactory } from "./models/hero-factory.js";
 import { SpriteCollection } from "./views/sprite-collection.js";
 import { StartScreen } from "./views/start-screen.js";
+import { HeroScreen } from "./views/hero-screen.js";
 
 /**
  * @public
@@ -37,6 +39,13 @@ export class Game {
         this.sprites = new SpriteCollection(config.sprites, p);
         /**
          * @private
+         * @readonly
+         * @description Factory to create the hero.
+         * @type {HeroFactory}
+         */
+        this.heroFactory = new HeroFactory(config.heroes);
+        /**
+         * @private
          * @description Font.
          * @type {object}
          */
@@ -70,6 +79,7 @@ export class Game {
         this.sprites.preload();
 
         this.screens[StartScreen.ID] = new StartScreen(this);
+        this.screens[HeroScreen.ID] = new HeroScreen(this);
         this.currentScreen = this.screens[StartScreen.ID];
     }
 
@@ -136,6 +146,15 @@ export class Game {
      */
     getSprites() {
         return this.sprites;
+    }
+
+    /**
+     * @public
+     * @description Gets the available heroes.
+     * @returns {object[]} Collection of available heroes.
+     */
+    getAvailableHeroes() {
+        return this.heroFactory.getAvailable();
     }
 
     /**

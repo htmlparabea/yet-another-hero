@@ -28,6 +28,6 @@ let main = (p) => {
         game.draw();
     };
 
-}
+};
 
 let myp5 = new p5(main);

@@ -85,10 +85,10 @@ export class SpriteCollection {
      */
     preload() {
         this.loadBackgrounds();
-        this.loadUI();
-        this.loadFloors();
-        this.loadWalls();
-        this.loadItems();
+        //this.loadUI();
+        //this.loadFloors();
+        //this.loadWalls();
+        //this.loadItems();
         this.loadHeroes();
     }
 
@@ -98,8 +98,7 @@ export class SpriteCollection {
      */
     loadBackgrounds() {
         let cnf = this.config.backgrounds;
-        let sprites = this.backgrounds;
-        sprites.start = this.loadImage(cnf.start);
+        this.backgrounds.start = this.p.loadImage(cnf.start);
     }
 
     /**
@@ -169,7 +168,8 @@ export class SpriteCollection {
      */
     loadHero(config) {
         return {
-            "idle": config.idle.map(p => this.loadImage(p))
+            "portrait": this.p.loadImage(config.portrait),
+            //"idle": config.idle.map(x => this.p.loadImage(x))
         };
     }
 
@@ -181,7 +181,7 @@ export class SpriteCollection {
      */
     loadImage(fileName) {
         const basePath = this.config.basePath;
-        return this.p.loadImage(`${basePath}/${fileName}`)
+        return this.p.loadImage(`${basePath}/${fileName}`);
     }
 
     /**
