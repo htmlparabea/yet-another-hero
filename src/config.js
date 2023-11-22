@@ -1,4 +1,5 @@
 import backgrounds_start from "./sprites/backgrounds/start.png";
+import backgrounds_frame from "./sprites/backgrounds/frame.png";
 import heroes_elf_portrait from "./sprites/heroes/elf-portrait.png";
 import heroes_knight_portrait from "./sprites/heroes/knight-portrait.png";
 import heroes_wizard_portrait from "./sprites/heroes/wizard-portrait.png";
@@ -12,7 +13,8 @@ export const config = {
     "font": "press-start.regular.ttf",
     "sprites": {
         "backgrounds": {
-            "start": backgrounds_start
+            "start": backgrounds_start,
+            "frame": backgrounds_frame
         },
         "ui": {
             "heart": {
@@ -83,28 +85,28 @@ export const config = {
     },
     "heroes": [{
         "id": "knight",
-        "name": "Sir Knight",
+        "name": "Candela",
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
         "id": "elf",
-        "name": "No name",
+        "name": "Marina",
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
         "id": "wizard",
-        "name": "No name",
+        "name": "Olimpia",
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
         "id": "pumpkin",
-        "name": "Mr Pump",
+        "name": "Martín",
         "maxLife": 8,
         "life": 6,
         "maxsight": 4,

@@ -87,7 +87,7 @@ export class HeroScreen extends Screen {
 
         let x = width / 2;
         let y = 24;
-        this.p.text("Selecciona un personaje", x, y);
+        this.p.text("Selecciona tu personaje", x, y);
     }
 
     /**
@@ -95,28 +95,51 @@ export class HeroScreen extends Screen {
      * @description Draws the current hero.
      */
     drawCurrentHero() {
+        const width = this.p.width;
+
+        const frameSprite = this.sprites.backgrounds.frame;
+        this.p.image(frameSprite, 64, 64, 256, 256);
+
         const hero = this.heroes[this.index];
         const sprite = this.sprites.heroes[hero.id].portrait;
 
-        this.p.image(sprite, 64, 64, 256, 256);
-
-        //this.drawHeroName(x, y, hero.name);
+        this.p.image(sprite, 114, 114, 128, 128);
 
 
-        // let size = 32;
-        // let xpad = 0;
-        // let ypad = 16;
-        // let xoffset;
-        // let yoffset;
-        // const sprite = this.sprites.getHero(hero.id, "idle", frame);
-        // this.p.image(sprite, x + xpad, y + ypad, size, size);
+        this.p.textAlign(this.p.LEFT, this.p.TOP);
+        this.p.fill(255);
 
-        // xpad = -32;
-        // xoffset = 96;
-        // yoffset = 32;
-        // this.drawInsigth((x + xpad) + xoffset, y + yoffset, "Life", hero.life);
-        // this.drawInsigth((x + xpad) + 2 * xoffset, y + yoffset, "Power", 5);
-        // this.drawInsigth((x + xpad) + 3 * xoffset, y + yoffset, "Sight", hero.sight);
+        let x = 32 + (width / 2);
+        let y = 64;
+        let lh = 24; // line height
+        let sh = 6;
+
+        this.p.textSize(Screen.TITLE_SIZE);
+        this.p.text("Nombre", x, y);
+        this.p.text("Energía", x, y + (2 * lh) + (1 * sh));
+        this.p.text("Fuerza", x, y + (4 * lh) + (2 * sh));
+        this.p.text("Agilidad", x, y + (6 * lh) + (3 * sh));
+
+        this.p.textSize(Screen.TEXT_SIZE);
+        this.p.text(hero.name, x, y + (1 * lh));
+        const v1 = this.convertToStars(hero.maxLife);
+        this.p.text(v1, x, y + (3 * lh) + (1 * sh));
+        const v2 = this.convertToStars(hero.maxSight);
+        this.p.text(v2, x, y + (5 * lh) + (2 * sh));
+        const v3 = this.convertToStars(hero.maxSight);
+        this.p.text(v3, x, y + (7 * lh) + (3 * sh));
+    }
+
+    /**
+     * @private
+     * @description Converts the given value to stars.
+     * @param {number} value Value to convert.
+     * @returns {string}
+     */
+    convertToStars(value) {
+        let p = "";
+        [...Array(value).keys()].forEach(() => p += "*");
+        return p;
     }
 
 }

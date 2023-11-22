@@ -29,7 +29,8 @@ export class SpriteCollection {
          * @type {object}
          */
         this.backgrounds = {
-            "start": null
+            "start": null,
+            "frame": null
         };
         /**
          * @public
@@ -98,7 +99,9 @@ export class SpriteCollection {
      */
     loadBackgrounds() {
         let cnf = this.config.backgrounds;
-        this.backgrounds.start = this.p.loadImage(cnf.start);
+        Object.keys(cnf).forEach(x => {
+            this.backgrounds[x] = this.p.loadImage(cnf[x]);
+        });
     }
 
     /**
