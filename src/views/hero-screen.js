@@ -95,22 +95,65 @@ export class HeroScreen extends Screen {
      * @description Draws the current hero.
      */
     drawCurrentHero() {
-        const width = this.p.width;
-
-        const frameSprite = this.sprites.backgrounds.frame;
-        this.p.image(frameSprite, 64, 64, 256, 256);
-
         const hero = this.heroes[this.index];
+
+        this.drawFrameBorder();
+        this.drawHeroPortrait(hero);
+        this.drawHeroInfo(hero);
+    }
+
+    /**
+     * @private
+     * @description Draws the frame border.
+     */
+    drawFrameBorder() {
+        const sprite = this.sprites.backgrounds.frame;
+        let x = 64;
+        let y = 64;
+        let s = 128;
+
+        this.p.image(sprite, x, y, s, s);
+
+        this.p.scale(-1, 1);
+        this.p.image(sprite, -x - (2 * s), y, s, s);
+        this.p.scale(-1, 1);
+
+        this.p.scale(1, -1);
+        this.p.image(sprite, x, -y - (2 * s), s, s);
+        this.p.scale(1, -1);
+
+        this.p.scale(-1, -1);
+        this.p.image(sprite, -x - (2 * s), -y - (2 * s), s, s);
+        this.p.scale(-1, -1);
+    }
+
+    /**
+     * @private
+     * @description Draws the hero portrait.
+     * @param {object} hero Current hero.
+     */
+    drawHeroPortrait(hero) {
         const sprite = this.sprites.heroes[hero.id].portrait;
+        let x = 64 + 10;
+        let y = 64;
+        let s = 2 * 73;
 
-        this.p.image(sprite, 114, 114, 128, 128);
+        this.p.image(sprite, x + 45, y + 55, s, s);
+    }
 
+    /**
+     * @private
+     * @description Draws the hero's info.
+     * @param {object} hero Current hero.
+     */
+    drawHeroInfo(hero) {
+        const width = this.p.width;
 
         this.p.textAlign(this.p.LEFT, this.p.TOP);
         this.p.fill(255);
 
         let x = 32 + (width / 2);
-        let y = 64;
+        let y = 72;
         let lh = 24; // line height
         let sh = 6;
 
