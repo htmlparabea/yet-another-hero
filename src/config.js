@@ -1,8 +1,29 @@
 import backgrounds_start from "./sprites/backgrounds/start.png";
 import backgrounds_frame from "./sprites/backgrounds/frame.png";
 import heroes_elf_portrait from "./sprites/heroes/elf-portrait.png";
+import heroes_elf_idle_f0 from "./sprites/heroes/elf-idle-f0.png";
+import heroes_elf_idle_f1 from "./sprites/heroes/elf-idle-f1.png";
+import heroes_elf_idle_f2 from "./sprites/heroes/elf-idle-f2.png";
+import heroes_elf_idle_f3 from "./sprites/heroes/elf-idle-f3.png";
 import heroes_knight_portrait from "./sprites/heroes/knight-portrait.png";
-import heroes_wizard_portrait from "./sprites/heroes/wizard-portrait.png";
+import heroes_knight_idle_f0 from "./sprites/heroes/knight-idle-f0.png";
+import heroes_knight_idle_f1 from "./sprites/heroes/knight-idle-f1.png";
+import heroes_knight_idle_f2 from "./sprites/heroes/knight-idle-f2.png";
+import heroes_knight_idle_f3 from "./sprites/heroes/knight-idle-f3.png";
+import heroes_knight_run_f0 from "./sprites/heroes/knight-run-f0.png";
+import heroes_knight_run_f1 from "./sprites/heroes/knight-run-f1.png";
+import heroes_knight_run_f2 from "./sprites/heroes/knight-run-f2.png";
+import heroes_knight_run_f3 from "./sprites/heroes/knight-run-f3.png";
+import heroes_wizard_portrait from "./sprites/heroes/wizard-2-portrait.png";
+import heroes_wizard_idle_f0 from "./sprites/heroes/wizard-idle-f0.png";
+import heroes_wizard_idle_f1 from "./sprites/heroes/wizard-idle-f1.png";
+import heroes_wizard_idle_f2 from "./sprites/heroes/wizard-idle-f2.png";
+import heroes_wizard_idle_f3 from "./sprites/heroes/wizard-idle-f3.png";
+import heroes_pumpkin_portrait from "./sprites/heroes/pumpkin-portrait.png";
+import heroes_pumpkin_idle_f0 from "./sprites/heroes/pumpkin-idle-f0.png";
+import heroes_pumpkin_idle_f1 from "./sprites/heroes/pumpkin-idle-f1.png";
+import heroes_pumpkin_idle_f2 from "./sprites/heroes/pumpkin-idle-f2.png";
+import heroes_pumpkin_idle_f3 from "./sprites/heroes/pumpkin-idle-f3.png";
 
 /**
  * Contains the configuration.
@@ -48,65 +69,71 @@ export const config = {
             "knight": {
                 "portrait": heroes_knight_portrait,
                 "idle": [
-                    "heroes/knight_f_idle_anim_f0.png",
-                    "heroes/knight_f_idle_anim_f1.png",
-                    "heroes/knight_f_idle_anim_f2.png",
-                    "heroes/knight_f_idle_anim_f3.png"
+                    heroes_knight_idle_f0,
+                    heroes_knight_idle_f1,
+                    heroes_knight_idle_f2,
+                    heroes_knight_idle_f3
+                ],
+                "run":[
+                    heroes_knight_run_f0,
+                    heroes_knight_run_f1,
+                    heroes_knight_run_f2,
+                    heroes_knight_run_f3
                 ]
             },
             "elf": {
                 "portrait": heroes_elf_portrait,
                 "idle": [
-                    "heroes/elf_m_idle_anim_f0.png",
-                    "heroes/elf_m_idle_anim_f1.png",
-                    "heroes/elf_m_idle_anim_f2.png",
-                    "heroes/elf_m_idle_anim_f3.png"
+                    heroes_elf_idle_f0,
+                    heroes_elf_idle_f1,
+                    heroes_elf_idle_f2,
+                    heroes_elf_idle_f3
                 ]
             },
             "wizard": {
                 "portrait": heroes_wizard_portrait,
                 "idle": [
-                    "heroes/wizzard_f_idle_anim_f0.png",
-                    "heroes/wizzard_f_idle_anim_f1.png",
-                    "heroes/wizzard_f_idle_anim_f2.png",
-                    "heroes/wizzard_f_idle_anim_f3.png"
+                    heroes_wizard_idle_f0,
+                    heroes_wizard_idle_f1,
+                    heroes_wizard_idle_f2,
+                    heroes_wizard_idle_f3
                 ]
             },
             "pumpkin": {
-                "portrait": heroes_wizard_portrait,
+                "portrait": heroes_pumpkin_portrait,
                 "idle": [
-                    "heroes/pumpkin_dude_idle_anim_f0.png",
-                    "heroes/pumpkin_dude_idle_anim_f1.png",
-                    "heroes/pumpkin_dude_idle_anim_f2.png",
-                    "heroes/pumpkin_dude_idle_anim_f3.png"
+                    heroes_pumpkin_idle_f0,
+                    heroes_pumpkin_idle_f1,
+                    heroes_pumpkin_idle_f2,
+                    heroes_pumpkin_idle_f3
                 ]
             }
         }
     },
     "heroes": [{
         "id": "knight",
-        "name": "Candela",
+        "name": "Olivia", // Más fuerte y meno ágil.
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
         "id": "elf",
-        "name": "Marina",
+        "name": "Sofía", // Más ágil y menos fuerza.
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
-        "id": "wizard",
-        "name": "Olimpia",
+        "id": "wizard", // Mucha vista y menos energía.
+        "name": "Amelia",
         "maxLife": 10,
         "life": 8,
         "maxSight": 3,
         "sight": 2
     }, {
-        "id": "pumpkin",
-        "name": "Martín",
+        "id": "pumpkin", // Todo a medias.
+        "name": "Gustavo",
         "maxLife": 8,
         "life": 6,
         "maxsight": 4,

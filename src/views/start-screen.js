@@ -97,6 +97,7 @@ export class StartScreen extends Screen {
     // eslint-disable-next-line no-unused-vars
     draw(frame) {
         this.drawBackground();
+        this.drawTitle();
         this.drawOptions();
         this.drawDate();
     }
@@ -113,6 +114,21 @@ export class StartScreen extends Screen {
         this.p.imageMode(this.p.CENTER);
         this.p.image(sprite, width / 2, height / 2, height, height);
         this.p.imageMode(this.p.CORNER);
+    }
+
+    drawTitle() {
+        const width = this.p.width;
+        const height = this.p.height;
+
+        let x = 0.5 * width;
+        let y = 0.6 * height;
+
+        this.p.textAlign(this.p.CENTER, this.p.CENTER);
+        this.p.textSize(Screen.TITLE_SIZE + 6);
+        this.p.fill(255);
+
+        this.p.text("AVENTURA", x, y + 0 * 24);
+        this.p.text("EN EL CASTILLO", x, y + 1 * 24);
     }
 
     /**

@@ -156,35 +156,36 @@ export class SpriteCollection {
      */
     loadHeroes() {
         let cnf = this.config.heroes;
-        let sprites = this.heroes;
-
         let keys = Object.keys(cnf);
+        let spt = {};
+
         for (let key of keys) {
-            sprites[key] = this.loadHero(cnf[key]);
+            spt[key] = this.loadObject(cnf[key]);
         }
+
+        this.heroes = spt;
     }
 
     /**
      * @private
      * @description Loads the sprites for a hero.
-     * @param {object} config Configuration
+     * @param {object} cnf Configuration
+     * @returns {object} Object containing the sprites.
      */
-    loadHero(config) {
-        return {
-            "portrait": this.p.loadImage(config.portrait),
-            //"idle": config.idle.map(x => this.p.loadImage(x))
-        };
-    }
+    loadObject(cnf) {
+        let keys = Object.keys(cnf);
+        let spt = {};
 
-    /**
-     * @private
-     * @description Loads the given image.
-     * @param {string} fileName File name of the sprite.
-     * @returns {object} Image.
-     */
-    loadImage(fileName) {
-        const basePath = this.config.basePath;
-        return this.p.loadImage(`${basePath}/${fileName}`);
+        for (let key of keys) {
+            let tmp = cnf[key];
+            if (Array.isArray(tmp)) {
+                spt[key] = tmp.map(x => this.p.loadImage(x));
+            } else {
+                spt[key] = this.p.loadImage(tmp);
+            }
+        }
+
+        return spt;
     }
 
     /**

@@ -37,6 +37,10 @@ export class HeroScreen extends Screen {
          * @type {number}
          */
         this.index = 0;
+
+        this.s = false;//seleccionado -> empieza animación.
+        this.e = false;//acaba animación.
+        this.offset = 0;
     }
 
     /**
@@ -51,11 +55,14 @@ export class HeroScreen extends Screen {
      * @inheritdoc
      */
     keyPressed(key) {
+        if (this.s) return;
+
         if (key === "ArrowLeft") {
             this.game.setCurrentScreen(StartScreen.ID);
         } else if (key === "ArrowRight") {
+            this.s = true;
             //create hero
-            this.game.setCurrentScreen(null);
+            //this.game.setCurrentScreen(null);
         } else if (key === "ArrowDown") {
             const max = this.heroes.length - 1;
             this.index = (this.index + 1) > max ? max : this.index + 1;
@@ -68,10 +75,10 @@ export class HeroScreen extends Screen {
     /**
      * @inheritdoc
      */
-    // eslint-disable-next-line no-unused-vars
     draw(frame) {
         this.drawTitle();
-        this.drawCurrentHero();
+        this.drawFrameBorder();
+        this.drawCurrentHero(frame);
     }
 
     /**
@@ -88,18 +95,6 @@ export class HeroScreen extends Screen {
         let x = width / 2;
         let y = 24;
         this.p.text("Selecciona tu personaje", x, y);
-    }
-
-    /**
-     * @private
-     * @description Draws the current hero.
-     */
-    drawCurrentHero() {
-        const hero = this.heroes[this.index];
-
-        this.drawFrameBorder();
-        this.drawHeroPortrait(hero);
-        this.drawHeroInfo(hero);
     }
 
     /**
@@ -129,6 +124,18 @@ export class HeroScreen extends Screen {
 
     /**
      * @private
+     * @description Draws the current hero.
+     */
+    drawCurrentHero(frame) {
+        const hero = this.heroes[this.index];
+
+        this.drawHeroPortrait(hero);
+        this.drawHeroInfo(hero);
+        this.drawHeroCharacter(hero, frame);
+    }
+
+    /**
+     * @private
      * @description Draws the hero portrait.
      * @param {object} hero Current hero.
      */
@@ -138,7 +145,36 @@ export class HeroScreen extends Screen {
         let y = 64;
         let s = 2 * 73;
 
-        this.p.image(sprite, x + 45, y + 55, s, s);
+        let o = this.getHorizontalOffset();
+        this.p.image(sprite, x + 45 - o, y + 55, s, s);
+    }
+
+    drawHeroCharacter(hero, frame) {
+        const width = this.p.width;
+        const height = this.p.height;
+
+        let x = 0.5 * width;
+        let y = 0.8 * height;
+
+        if (this.e) {
+            this.game.setCurrentScreen(null);
+        }
+        else if (!this.s) {
+            // no se ha seleccionado.
+            const sprite = this.sprites.heroes[hero.id].idle[frame % 4];
+            this.p.image(sprite, x, y, 2 * 16, 2 * 28);
+        } else {
+            // se ha seleccionado.
+            this.offset++;
+            let o = this.getHorizontalOffset();
+
+            if (x + o < width) {
+                const sprite = this.sprites.heroes[hero.id].run[frame % 4];
+                this.p.image(sprite, x + o, y, 2 * 16, 2 * 28);
+            } else {
+                this.e = true;
+            }
+        }
     }
 
     /**
@@ -152,7 +188,7 @@ export class HeroScreen extends Screen {
         this.p.textAlign(this.p.LEFT, this.p.TOP);
         this.p.fill(255);
 
-        let x = 32 + (width / 2);
+        let x = 32 + (width / 2) - this.getHorizontalOffset();
         let y = 72;
         let lh = 24; // line height
         let sh = 6;
@@ -183,6 +219,10 @@ export class HeroScreen extends Screen {
         let p = "";
         [...Array(value).keys()].forEach(() => p += "*");
         return p;
+    }
+
+    getHorizontalOffset() {
+        return 3 * this.offset * this.p.frameRate();
     }
 
 }
