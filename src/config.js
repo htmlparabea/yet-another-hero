@@ -5,6 +5,10 @@ import heroes_elf_idle_f0 from "./sprites/heroes/elf-idle-f0.png";
 import heroes_elf_idle_f1 from "./sprites/heroes/elf-idle-f1.png";
 import heroes_elf_idle_f2 from "./sprites/heroes/elf-idle-f2.png";
 import heroes_elf_idle_f3 from "./sprites/heroes/elf-idle-f3.png";
+import heroes_elf_run_f0 from "./sprites/heroes/elf-run-f0.png";
+import heroes_elf_run_f1 from "./sprites/heroes/elf-run-f1.png";
+import heroes_elf_run_f2 from "./sprites/heroes/elf-run-f2.png";
+import heroes_elf_run_f3 from "./sprites/heroes/elf-run-f3.png";
 import heroes_knight_portrait from "./sprites/heroes/knight-portrait.png";
 import heroes_knight_idle_f0 from "./sprites/heroes/knight-idle-f0.png";
 import heroes_knight_idle_f1 from "./sprites/heroes/knight-idle-f1.png";
@@ -19,11 +23,19 @@ import heroes_wizard_idle_f0 from "./sprites/heroes/wizard-idle-f0.png";
 import heroes_wizard_idle_f1 from "./sprites/heroes/wizard-idle-f1.png";
 import heroes_wizard_idle_f2 from "./sprites/heroes/wizard-idle-f2.png";
 import heroes_wizard_idle_f3 from "./sprites/heroes/wizard-idle-f3.png";
+import heroes_wizard_run_f0 from "./sprites/heroes/wizard-run-f0.png";
+import heroes_wizard_run_f1 from "./sprites/heroes/wizard-run-f1.png";
+import heroes_wizard_run_f2 from "./sprites/heroes/wizard-run-f2.png";
+import heroes_wizard_run_f3 from "./sprites/heroes/wizard-run-f3.png";
 import heroes_pumpkin_portrait from "./sprites/heroes/pumpkin-portrait.png";
 import heroes_pumpkin_idle_f0 from "./sprites/heroes/pumpkin-idle-f0.png";
 import heroes_pumpkin_idle_f1 from "./sprites/heroes/pumpkin-idle-f1.png";
 import heroes_pumpkin_idle_f2 from "./sprites/heroes/pumpkin-idle-f2.png";
 import heroes_pumpkin_idle_f3 from "./sprites/heroes/pumpkin-idle-f3.png";
+import heroes_pumpkin_run_f0 from "./sprites/heroes/pumpkin-run-f0.png";
+import heroes_pumpkin_run_f1 from "./sprites/heroes/pumpkin-run-f1.png";
+import heroes_pumpkin_run_f2 from "./sprites/heroes/pumpkin-run-f2.png";
+import heroes_pumpkin_run_f3 from "./sprites/heroes/pumpkin-run-f3.png";
 
 /**
  * Contains the configuration.
@@ -74,7 +86,7 @@ export const config = {
                     heroes_knight_idle_f2,
                     heroes_knight_idle_f3
                 ],
-                "run":[
+                "run": [
                     heroes_knight_run_f0,
                     heroes_knight_run_f1,
                     heroes_knight_run_f2,
@@ -88,6 +100,12 @@ export const config = {
                     heroes_elf_idle_f1,
                     heroes_elf_idle_f2,
                     heroes_elf_idle_f3
+                ],
+                "run": [
+                    heroes_elf_run_f0,
+                    heroes_elf_run_f1,
+                    heroes_elf_run_f2,
+                    heroes_elf_run_f3
                 ]
             },
             "wizard": {
@@ -97,6 +115,12 @@ export const config = {
                     heroes_wizard_idle_f1,
                     heroes_wizard_idle_f2,
                     heroes_wizard_idle_f3
+                ],
+                "run": [
+                    heroes_wizard_run_f0,
+                    heroes_wizard_run_f1,
+                    heroes_wizard_run_f2,
+                    heroes_wizard_run_f3
                 ]
             },
             "pumpkin": {
@@ -106,6 +130,12 @@ export const config = {
                     heroes_pumpkin_idle_f1,
                     heroes_pumpkin_idle_f2,
                     heroes_pumpkin_idle_f3
+                ],
+                "run": [
+                    heroes_pumpkin_run_f0,
+                    heroes_pumpkin_run_f1,
+                    heroes_pumpkin_run_f2,
+                    heroes_pumpkin_run_f3
                 ]
             }
         }

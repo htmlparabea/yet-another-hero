@@ -13,6 +13,14 @@ export class Screen {
     /**
      * @public
      * @constant
+     * @description Animation speed.
+     * @type {number}
+     */
+    static ANIMATION_SPEED = 4;
+
+    /**
+     * @public
+     * @constant
      * @type {Number}
      * @description Text size for titles.
      */
@@ -64,6 +72,15 @@ export class Screen {
     }
 
     /**
+     * @public
+     * @abstract
+     * @description Resets the current screen.
+     */
+    reset() {
+        throw Error("Implement this!");
+    }
+
+    /**
       * @public
       * @abstract
       * @description Called when a mouse click occurs.
@@ -95,6 +112,15 @@ export class Screen {
     // eslint-disable-next-line no-unused-vars
     draw(frame) {
         throw Error("Implement this!");
+    }
+
+    /**
+     * @protected
+     * @description Gets the animation speed.
+     * @returns {number} Animation speed.
+     */
+    getAnimationSpeed() {
+        return Screen.ANIMATION_SPEED * this.p.frameRate();
     }
 
 }
