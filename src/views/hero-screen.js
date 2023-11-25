@@ -158,7 +158,7 @@ export class HeroScreen extends Screen {
         const hero = this.heroes[this.index];
 
         this.drawHeroPortrait(hero);
-        this.drawHeroInfo(hero);
+        this.drawHeroInsights(hero);
         this.drawHeroCharacter(hero, frame);
     }
 
@@ -205,7 +205,7 @@ export class HeroScreen extends Screen {
      * @description Draws the hero's info.
      * @param {object} hero Current hero.
      */
-    drawHeroInfo(hero) {
+    drawHeroInsights(hero) {
         const width = this.p.width;
 
         this.p.textAlign(this.p.LEFT, this.p.TOP);
@@ -217,18 +217,18 @@ export class HeroScreen extends Screen {
         let sh = 6;
 
         this.p.textSize(Screen.TITLE_SIZE);
-        this.p.text("Nombre", x, y);
-        this.p.text("Energía", x, y + (2 * lh) + (1 * sh));
-        this.p.text("Fuerza", x, y + (4 * lh) + (2 * sh));
-        this.p.text("Agilidad", x, y + (6 * lh) + (3 * sh));
+        this.p.text("NOMBRE", x, y);
+        this.p.text("ATAQUE", x, y + (2 * lh) + (1 * sh));
+        this.p.text("DEFENSA", x, y + (4 * lh) + (2 * sh));
+        this.p.text("HABILIDAD", x, y + (6 * lh) + (3 * sh));
 
         this.p.textSize(Screen.TEXT_SIZE);
         this.p.text(hero.name, x, y + (1 * lh));
-        const v1 = this.convertToStars(hero.maxLife);
+        const v1 = this.convertToStars(hero.attack);
         this.p.text(v1, x, y + (3 * lh) + (1 * sh));
-        const v2 = this.convertToStars(hero.maxSight);
+        const v2 = this.convertToStars(hero.defense);
         this.p.text(v2, x, y + (5 * lh) + (2 * sh));
-        const v3 = this.convertToStars(hero.maxSight);
+        const v3 = this.convertToStars(hero.hability);
         this.p.text(v3, x, y + (7 * lh) + (3 * sh));
     }
 

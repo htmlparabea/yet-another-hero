@@ -142,32 +142,28 @@ export const config = {
     },
     "heroes": [{
         "id": "knight",
-        "name": "Olivia", // Más fuerte y meno ágil.
-        "maxLife": 10,
-        "life": 8,
-        "maxSight": 3,
-        "sight": 2
+        "name": "Olivia",
+        "attack": 5,
+        "defense": 5,
+        "hability": 2
     }, {
         "id": "elf",
-        "name": "Sofía", // Más ágil y menos fuerza.
-        "maxLife": 10,
-        "life": 8,
-        "maxSight": 3,
-        "sight": 2
+        "name": "Sofía",
+        "attack": 4,
+        "defense": 3,
+        "hability": 5
     }, {
-        "id": "wizard", // Mucha vista y menos energía.
+        "id": "wizard",
         "name": "Amelia",
-        "maxLife": 10,
-        "life": 8,
-        "maxSight": 3,
-        "sight": 2
+        "attack": 5,
+        "defense": 2,
+        "hability": 5
     }, {
-        "id": "pumpkin", // Todo a medias.
+        "id": "pumpkin",
         "name": "Gustavo",
-        "maxLife": 8,
-        "life": 6,
-        "maxsight": 4,
-        "sight": 3
+        "attack": 3,
+        "defense": 2,
+        "hability": 3
     }],
     "board": {
         "cellSize": 32,
