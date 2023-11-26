@@ -169,12 +169,14 @@ export class HeroScreen extends Screen {
      */
     drawHeroPortrait(hero) {
         const sprite = this.sprites.heroes[hero.id].portrait;
-        let x = 64 + 10;
-        let y = 64;
-        let s = 2 * 73;
+        let x = 63;// + 10;
+        let y = 63;
+        //let s = 2 * 74;
+        // Alto = 2*74 = 148
+        // Ancho = 2*74 + 20 = 168
 
         let o = this.getHorizontalOffset();
-        this.p.image(sprite, x + 45 - o, y + 55, s, s);
+        this.p.image(sprite, x + 45 - o, y + 55);
     }
 
     /**
@@ -221,6 +223,7 @@ export class HeroScreen extends Screen {
         this.p.text("ATAQUE", x, y + (2 * lh) + (1 * sh));
         this.p.text("DEFENSA", x, y + (4 * lh) + (2 * sh));
         this.p.text("HABILIDAD", x, y + (6 * lh) + (3 * sh));
+        this.p.text("SUERTE", x, y + (8 * lh) + (4 * sh));
 
         this.p.textSize(Screen.TEXT_SIZE);
         this.p.text(hero.name, x, y + (1 * lh));
@@ -230,6 +233,8 @@ export class HeroScreen extends Screen {
         this.p.text(v2, x, y + (5 * lh) + (2 * sh));
         const v3 = this.convertToStars(hero.hability);
         this.p.text(v3, x, y + (7 * lh) + (3 * sh));
+        const v4 = this.convertToStars(hero.luck);
+        this.p.text(v4, x, y + (9 * lh) + (4 * sh));
     }
 
     /**
@@ -253,7 +258,7 @@ export class HeroScreen extends Screen {
      */
     convertToStars(value) {
         let p = "";
-        [...Array(value).keys()].forEach(() => p += "*");
+        [...Array(value).keys()].forEach(() => p += "**");
         return p;
     }
 

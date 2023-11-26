@@ -18,7 +18,7 @@ import heroes_knight_run_f0 from "./sprites/heroes/knight-run-f0.png";
 import heroes_knight_run_f1 from "./sprites/heroes/knight-run-f1.png";
 import heroes_knight_run_f2 from "./sprites/heroes/knight-run-f2.png";
 import heroes_knight_run_f3 from "./sprites/heroes/knight-run-f3.png";
-import heroes_wizard_portrait from "./sprites/heroes/wizard-2-portrait.png";
+import heroes_wizard_portrait from "./sprites/heroes/wizard-portrait.png";
 import heroes_wizard_idle_f0 from "./sprites/heroes/wizard-idle-f0.png";
 import heroes_wizard_idle_f1 from "./sprites/heroes/wizard-idle-f1.png";
 import heroes_wizard_idle_f2 from "./sprites/heroes/wizard-idle-f2.png";
@@ -143,27 +143,31 @@ export const config = {
     "heroes": [{
         "id": "knight",
         "name": "Olivia",
-        "attack": 5,
+        "attack": 5, //5+5+2+2 = 14
         "defense": 5,
-        "hability": 2
+        "hability": 2,
+        "luck": 2
     }, {
         "id": "elf",
-        "name": "Sofía",
-        "attack": 4,
-        "defense": 3,
-        "hability": 5
+        "name": "Sofía", 
+        "attack": 4, // 4+2+5+3 = 14
+        "defense": 2,
+        "hability": 5,
+        "luck": 3
     }, {
         "id": "wizard",
         "name": "Amelia",
-        "attack": 5,
+        "attack": 5, //5+2+3+4 = 14
         "defense": 2,
-        "hability": 5
+        "hability": 3,
+        "luck": 4
     }, {
         "id": "pumpkin",
         "name": "Gustavo",
-        "attack": 3,
+        "attack": 3, // 3+2+4+5 = 14
         "defense": 2,
-        "hability": 3
+        "hability": 4,
+        "luck": 5
     }],
     "board": {
         "cellSize": 32,
