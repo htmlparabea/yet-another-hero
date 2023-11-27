@@ -6,37 +6,95 @@ export class Hero {
     /**
      * @public
      * @description Class constructor.
+     * @param {string} id Hero id.
+     * @param {string} name Hero name.
+     * @param {object} props Hero properties.
      */
-    constructor() {
+    constructor(id, name, props) {
         /**
+         * @public
+         * @readonly
+         * @description Id.
+         * @type {string}
+         */
+        this.id = id;
+        /**
+         * @public
+         * @readonly
+         * @description Name.
+         * @type {string}
+         */
+        this.name = name;
+        /**
+         * @private
          * @description Row.
          * @type {number}
          */
         this.row = 0;
         /**
+         * @private
          * @description Column.
          * @type {number}
          */
         this.col = 0;
         /**
-         * @description Life.
+         * @private
+         * @description Luck.
          * @type {number}
          */
-        this.life = 10;
+        this.luck = props.luck;
         /**
+         * @private
+         * @description Current life.
+         * @type {number}
+         */
+        this.life = props.life;
+        /**
+         * @private
          * @description Max life.
          * @type {number}
          */
-        this.maxLife = 10;
-
-        this.sight = 5;
-
-        this.maxSight = 4;
-
-        this.coins = 0;
-
+        this.maxLife = props.maxLife;
+        /**
+         * @private
+         * @description Sight.
+         * @type {number}
+         */
+        this.sight = props.sight;
+        /**
+         * @private
+         * @description Max sight.
+         * @type {number}
+         */
+        this.maxSight = props.maxSight;
+        /**
+         * @private
+         * @description Remaining shots.
+         * @type {number}
+         */
+        this.shots = props.shots;
+        /**
+         * @private
+         * @description Max shots.
+         * @type {number}
+         */
+        this.maxShots = props.maxShots;
+        /**
+         * @private
+         * @description Current weapon.
+         * @type {object|null}
+         */
         this.weapon = null;
+        /**
+         * @private
+         * @description Number of coins.
+         * @type {number}
+         */
+        this.coins = 0;
     }
+
+
+
 
     /**
      * @public

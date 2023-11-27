@@ -27,7 +27,7 @@ export class HeroScreen extends Screen {
         /**
         * @private
         * @readonly
-        * @description Available herpes to show.
+        * @description Available heroes to show.
         * @type {object[]}
         */
         this.heroes = game.getAvailableHeroes();
@@ -77,7 +77,7 @@ export class HeroScreen extends Screen {
         if (key === "ArrowLeft") {
             this.game.setCurrentScreen(StartScreen.ID);
         } else if (key === "ArrowRight") {
-            //TODO: this.game.createHero()
+            this.createHero();
             this.isAnimating = true;
         } else if (key === "ArrowDown") {
             const max = this.heroes.length - 1;
@@ -105,6 +105,15 @@ export class HeroScreen extends Screen {
         if (0.5 * width + o > width) {
             this.game.setCurrentScreen(null);
         }
+    }
+
+    /**
+     * @private
+     * @description Creates the hero.
+     */
+    createHero() {
+        const hero = this.heroes[this.index];
+        this.game.createHero(hero.id);
     }
 
     /**

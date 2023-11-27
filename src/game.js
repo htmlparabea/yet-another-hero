@@ -159,6 +159,16 @@ export class Game {
 
     /**
      * @public
+     * @description Creates the hero.
+     * @param {object} cnf Hero config.
+     */
+    createHero(cnf) {
+        const hero = this.heroFactory.createHero(cnf);
+        console.log(hero);
+    }
+
+    /**
+     * @public
      * @description Gets the font for the texts.
      * @returns {object} Font.
      */
