@@ -36,6 +36,15 @@ import heroes_pumpkin_run_f0 from "./sprites/heroes/pumpkin-run-f0.png";
 import heroes_pumpkin_run_f1 from "./sprites/heroes/pumpkin-run-f1.png";
 import heroes_pumpkin_run_f2 from "./sprites/heroes/pumpkin-run-f2.png";
 import heroes_pumpkin_run_f3 from "./sprites/heroes/pumpkin-run-f3.png";
+import floors_0 from "./sprites/floors/floor-0.png";
+import floors_1 from "./sprites/floors/floor-1.png";
+import floors_2 from "./sprites/floors/floor-2.png";
+import floors_3 from "./sprites/floors/floor-3.png";
+import floors_4 from "./sprites/floors/floor-4.png";
+import floors_5 from "./sprites/floors/floor-5.png";
+import floors_6 from "./sprites/floors/floor-6.png";
+import floors_7 from "./sprites/floors/floor-7.png";
+import wall from "./sprites/walls/wall.png";
 
 /**
  * Contains the configuration.
@@ -48,34 +57,6 @@ export const config = {
         "backgrounds": {
             "start": backgrounds_start,
             "frame": backgrounds_frame
-        },
-        "ui": {
-            "heart": {
-                "empty": "ui/heart-empty.png",
-                "half": "ui/heart-half.png",
-                "full": "ui/heart-full.png"
-            }
-        },
-        "floors": [
-            "floors/floor-0.png",
-            "floors/floor-1.png",
-            "floors/floor-2.png",
-            "floors/floor-3.png",
-            "floors/floor-4.png",
-            "floors/floor-5.png",
-            "floors/floor-6.png",
-            "floors/floor-7.png"
-        ],
-        "walls": {
-            "wall": "walls/wall.png"
-        },
-        "items": {
-            "coin": "items/coin.png",
-            "column": "walls/wall.png",
-            "hammer": "items/hammer.png",
-            "ladder": "items/ladder.png",
-            "potion": "items/flask-red-big.png",
-            "skull": "items/skull.png"
         },
         "heroes": {
             "knight": {
@@ -138,6 +119,33 @@ export const config = {
                     heroes_pumpkin_run_f3
                 ]
             }
+        },
+        "floors": [
+            floors_0,
+            floors_1,
+            floors_2,
+            floors_3,
+            floors_4,
+            floors_5,
+            floors_6,
+            floors_7
+        ],
+        "wall": wall,
+        "items": {
+            "coin": "items/coin.png",
+            "column": "walls/wall.png",
+            "hammer": "items/hammer.png",
+            "ladder": "items/ladder.png",
+            "potion": "items/flask-red-big.png",
+            "skull": "items/skull.png"
+        },
+
+        "ui": {
+            "heart": {
+                "empty": "ui/heart-empty.png",
+                "half": "ui/heart-half.png",
+                "full": "ui/heart-full.png"
+            }
         }
     },
     "heroes": [{
@@ -149,7 +157,7 @@ export const config = {
         "luck": 2
     }, {
         "id": "elf",
-        "name": "Sofía", 
+        "name": "Sofía",
         "attack": 4, // 4+2+5+3 = 14
         "defense": 2,
         "hability": 5,
@@ -170,7 +178,7 @@ export const config = {
         "luck": 5
     }],
     "board": {
-        "cellSize": 32,
+        "cellSize": 64,
         "grid": {
             "rows": 13,
             "cols": 31

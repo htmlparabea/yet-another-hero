@@ -1,7 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 import { Game } from "../game.js";
 import { Screen } from "./screen.js";
-import { HeroScreen } from "./hero-screen.js";
 
 /**
  * @public
@@ -13,12 +11,16 @@ export class StartScreen extends Screen {
      * @public
      * @constant
      * @type {string}
-     * @description Id for the start screen.
+     * @description Id for the play option.
      */
-    static ID = "START";
-
     static OPTION_PLAY = "PLAY";
 
+    /**
+     * @public
+     * @constant
+     * @type {string}
+     * @description Id for the configure option.
+     */
     static OPTION_CONFIGURE = "CONFIGURE";
 
     /**
@@ -85,7 +87,7 @@ export class StartScreen extends Screen {
         const opt = this.options[this.index];
 
         if (opt.value === StartScreen.OPTION_PLAY) {
-            return HeroScreen.ID;
+            return Game.SCREEN_HERO;
         }
 
         return null;
@@ -116,6 +118,10 @@ export class StartScreen extends Screen {
         this.p.imageMode(this.p.CORNER);
     }
 
+    /**
+     * @private
+     * @description Draws the title of the game.
+     */
     drawTitle() {
         const width = this.p.width;
         const height = this.p.height;

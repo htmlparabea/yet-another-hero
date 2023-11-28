@@ -1,21 +1,11 @@
-// eslint-disable-next-line no-unused-vars
 import { Game } from "../game.js";
 import { Screen } from "./screen.js";
-import { StartScreen } from "./start-screen.js";
 
 /**
  * @public
  * @description Implements the hero selection screen.
  */
 export class HeroScreen extends Screen {
-
-    /**
-     * @public
-     * @constant
-     * @type {string}
-     * @description Id for the hero screen.
-     */
-    static ID = "HERO";
 
     /**
      * @public
@@ -75,9 +65,8 @@ export class HeroScreen extends Screen {
         if (this.isAnimating) return;
 
         if (key === "ArrowLeft") {
-            this.game.setCurrentScreen(StartScreen.ID);
+            this.game.setCurrentScreen(Game.SCREEN_START);
         } else if (key === "ArrowRight") {
-            this.createHero();
             this.isAnimating = true;
         } else if (key === "ArrowDown") {
             const max = this.heroes.length - 1;
@@ -103,7 +92,7 @@ export class HeroScreen extends Screen {
         const o = this.getHorizontalOffset();
 
         if (0.5 * width + o > width) {
-            this.game.setCurrentScreen(null);
+            this.loadBoardForHero();
         }
     }
 
@@ -111,9 +100,10 @@ export class HeroScreen extends Screen {
      * @private
      * @description Creates the hero.
      */
-    createHero() {
+    loadBoardForHero() {
         const hero = this.heroes[this.index];
-        this.game.createHero(hero.id);
+        this.game.loadBoardForHero(hero.id);
+        this.game.setCurrentScreen(Game.SCREEN_BOARD);
     }
 
     /**

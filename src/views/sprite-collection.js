@@ -34,30 +34,23 @@ export class SpriteCollection {
         };
         /**
          * @public
-         * @description Sprites for UI.
+         * @description Heroes.
          * @type {object}
          */
-        this.ui = {
-            "heart": {
-                "empty": null,
-                "half": null,
-                "full": null
-            }
+        this.heroes = {
         };
         /**
          * @public
          * @description Floors.
-         * @type {object}
+         * @type {object[]}
          */
-        this.floors = null;
+        this.floors = [];
         /**
          * @public
-         * @description Walls.
+         * @description Wall.
          * @type {object}
          */
-        this.walls = {
-            "wall": null
-        };
+        this.wall = null;
         /**
          * @public
          * @description Items.
@@ -71,12 +64,18 @@ export class SpriteCollection {
             "potion": null,
             "skull": null
         };
+
         /**
          * @public
-         * @description Heroes.
+         * @description Sprites for UI.
          * @type {object}
          */
-        this.heroes = {
+        this.ui = {
+            "heart": {
+                "empty": null,
+                "half": null,
+                "full": null
+            }
         };
     }
 
@@ -86,11 +85,12 @@ export class SpriteCollection {
      */
     preload() {
         this.loadBackgrounds();
-        //this.loadUI();
-        //this.loadFloors();
-        //this.loadWalls();
-        //this.loadItems();
         this.loadHeroes();
+        this.loadFloors();
+        this.loadWall();
+        //this.loadItems();
+        //this.loadUI();
+
     }
 
     /**
@@ -102,52 +102,6 @@ export class SpriteCollection {
         Object.keys(cnf).forEach(x => {
             this.backgrounds[x] = this.p.loadImage(cnf[x]);
         });
-    }
-
-    /**
-     * @private
-     * @description Loads the sprites for the UI.
-     */
-    loadUI() {
-        let cnf = this.config.ui;
-        let sprites = this.ui;
-        sprites.heart.empty = this.loadImage(cnf.heart.empty);
-        sprites.heart.half = this.loadImage(cnf.heart.half);
-        sprites.heart.full = this.loadImage(cnf.heart.full);
-    }
-
-    /**
-     * @private
-     * @description Loads the sprites for the floors.
-     */
-    loadFloors() {
-        let cnf = this.config.floors;
-        this.floors = cnf.map(s => this.loadImage(s));
-    }
-
-    /**
-      * @private
-      * @description Loads the sprites for the walls.
-      */
-    loadWalls() {
-        let cnf = this.config.walls;
-        let sprites = this.walls;
-        sprites.wall = this.loadImage(cnf.wall);
-    }
-
-    /**
-     * @private
-     * @description Loads the sprites for the items.
-     */
-    loadItems() {
-        let cnf = this.config.items;
-        let sprites = this.items;
-        sprites.coin = this.loadImage(cnf.coin);
-        sprites.column = this.loadImage(cnf.column);
-        sprites.hammer = this.loadImage(cnf.hammer);
-        sprites.ladder = this.loadImage(cnf.ladder);
-        sprites.potion = this.loadImage(cnf.potion);
-        sprites.skull = this.loadImage(cnf.skull);
     }
 
     /**
@@ -165,6 +119,41 @@ export class SpriteCollection {
 
         this.heroes = spt;
     }
+
+    /**
+     * @private
+     * @description Loads the sprites for the floors.
+     */
+    loadFloors() {
+        let cnf = this.config.floors;
+        cnf.forEach(x => {
+            this.floors.push(this.p.loadImage(x));
+        });
+    }
+
+    /**
+      * @private
+      * @description Loads the sprites for the wall.
+      */
+    loadWall() {
+        this.wall = this.p.loadImage(this.config.wall);
+    }
+
+    /**
+     * @private
+     * @description Loads the sprites for the items.
+     */
+    loadItems() {
+        let cnf = this.config.items;
+        let sprites = this.items;
+        sprites.coin = this.loadImage(cnf.coin);
+        sprites.column = this.loadImage(cnf.column);
+        sprites.hammer = this.loadImage(cnf.hammer);
+        sprites.ladder = this.loadImage(cnf.ladder);
+        sprites.potion = this.loadImage(cnf.potion);
+        sprites.skull = this.loadImage(cnf.skull);
+    }
+
 
     /**
      * @private
@@ -210,6 +199,19 @@ export class SpriteCollection {
     getHero(id, state, frame) {
         let i = frame % 4;
         return this.heroes[id][state][i];
+    }
+
+
+    /**
+     * @private
+     * @description Loads the sprites for the UI.
+     */
+    loadUI() {
+        let cnf = this.config.ui;
+        let sprites = this.ui;
+        sprites.heart.empty = this.loadImage(cnf.heart.empty);
+        sprites.heart.half = this.loadImage(cnf.heart.half);
+        sprites.heart.full = this.loadImage(cnf.heart.full);
     }
 
 }

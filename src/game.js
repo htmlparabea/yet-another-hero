@@ -1,13 +1,39 @@
 import { HeroFactory } from "./models/hero-factory.js";
+import { Board } from "./models/board.js";
 import { SpriteCollection } from "./views/sprite-collection.js";
 import { StartScreen } from "./views/start-screen.js";
 import { HeroScreen } from "./views/hero-screen.js";
+import { BoardScreen } from "./views/board-screen.js";
 
 /**
  * @public
  * @description Main class for the game.
  */
 export class Game {
+
+    /**
+     * @public
+     * @constant
+     * @type {string}
+     * @description Id for the start screen.
+     */
+    static SCREEN_START = "START";
+
+    /**
+     * @public
+     * @constant
+     * @type {string}
+     * @description Id for the hero screen.
+     */
+    static SCREEN_HERO = "HERO";
+
+    /**
+     * @public
+     * @constant
+     * @type {string}
+     * @description Id for the board screen.
+     */
+    static SCREEN_BOARD = "BOARD";
 
     /**
      * @public
@@ -46,6 +72,13 @@ export class Game {
         this.heroFactory = new HeroFactory(config.heroes);
         /**
          * @private
+         * @readonly
+         * @description Board game.
+         * @type {Board}
+         */
+        this.board = new Board(config.board);
+        /**
+         * @private
          * @description Font.
          * @type {object}
          */
@@ -78,9 +111,10 @@ export class Game {
         this.font = this.p.loadFont(`../fonts/${this.config.font}`);
         this.sprites.preload();
 
-        this.screens[StartScreen.ID] = new StartScreen(this);
-        this.screens[HeroScreen.ID] = new HeroScreen(this);
-        this.currentScreen = this.screens[StartScreen.ID];
+        this.screens[Game.SCREEN_START] = new StartScreen(this);
+        this.screens[Game.SCREEN_HERO] = new HeroScreen(this);
+        this.screens[Game.SCREEN_BOARD] = new BoardScreen(this);
+        this.currentScreen = this.screens[Game.SCREEN_START];
     }
 
     /**
@@ -162,9 +196,11 @@ export class Game {
      * @description Creates the hero.
      * @param {object} cnf Hero config.
      */
-    createHero(cnf) {
+    loadBoardForHero(cnf) {
         const hero = this.heroFactory.createHero(cnf);
-        console.log(hero);
+        this.board.load(hero);
+
+        console.log(this.board);
     }
 
     /**
