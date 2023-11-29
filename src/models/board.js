@@ -33,14 +33,14 @@ export class Board {
          * @description Max row.
          * @type {number}
          */
-        this.maxRow = config.rows - 1;
+        this.maxRow = config.grid.rows - 1;
         /**
          * @private
          * @readonly
          * @description Max col.
          * @type {number}
          */
-        this.maxCol = config.cols - 1;
+        this.maxCol = config.grid.cols - 1;
         /**
          * @private
          * @description Hero.
@@ -121,7 +121,7 @@ export class Board {
         const m = 8; //TODO.
 
         this.cells.filter(p => f(p))
-            .forEach(p => p.setAsFloor(Math.floor(m * Math.random())));
+            .forEach(p => p.setAsFloor(1 + Math.floor(m * Math.random())));
     }
 
     /**
@@ -218,10 +218,13 @@ export class Board {
     /**
      * @public
      * @description Try to move the hero.
-     * @param {number} row Row of clicked cell.
-     * @param {number} col Col of clicked cell.
+     * @param {number} dr Row of clicked cell.
+     * @param {number} dc Col of clicked cell.
      */
-    tryMoveHero(row, col) {
+    tryMoveHero(dr, dc) {
+        let row = this.board.hero.row + dr;
+        let col = this.board.hero.col + dc;
+
         if (row < 0 || row > this.maxRow ||
             col < 0 || col > this.maxCol) return;
 

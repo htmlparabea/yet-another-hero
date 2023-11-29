@@ -36,6 +36,7 @@ import heroes_pumpkin_run_f0 from "./sprites/heroes/pumpkin-run-f0.png";
 import heroes_pumpkin_run_f1 from "./sprites/heroes/pumpkin-run-f1.png";
 import heroes_pumpkin_run_f2 from "./sprites/heroes/pumpkin-run-f2.png";
 import heroes_pumpkin_run_f3 from "./sprites/heroes/pumpkin-run-f3.png";
+import wall from "./sprites/walls/wall.png";
 import floors_0 from "./sprites/floors/floor-0.png";
 import floors_1 from "./sprites/floors/floor-1.png";
 import floors_2 from "./sprites/floors/floor-2.png";
@@ -44,7 +45,6 @@ import floors_4 from "./sprites/floors/floor-4.png";
 import floors_5 from "./sprites/floors/floor-5.png";
 import floors_6 from "./sprites/floors/floor-6.png";
 import floors_7 from "./sprites/floors/floor-7.png";
-import wall from "./sprites/walls/wall.png";
 
 /**
  * Contains the configuration.
@@ -121,6 +121,7 @@ export const config = {
             }
         },
         "floors": [
+            wall,
             floors_0,
             floors_1,
             floors_2,
@@ -130,7 +131,6 @@ export const config = {
             floors_6,
             floors_7
         ],
-        "wall": wall,
         "items": {
             "coin": "items/coin.png",
             "column": "walls/wall.png",

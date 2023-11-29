@@ -192,6 +192,24 @@ export class Game {
     }
 
     /**
+     * @private
+     * @description Gets the board.
+     * @returns {Board} The board.
+     */
+    getBoard() {
+        return this.board;
+    }
+
+    /**
+     * @public
+     * @description Gets the font for the texts.
+     * @returns {object} Font.
+     */
+    getFont() {
+        return this.font;
+    }
+
+    /**
      * @public
      * @description Creates the hero.
      * @param {object} cnf Hero config.
@@ -203,14 +221,7 @@ export class Game {
         console.log(this.board);
     }
 
-    /**
-     * @public
-     * @description Gets the font for the texts.
-     * @returns {object} Font.
-     */
-    getFont() {
-        return this.font;
-    }
+
 
     /**
      * @public

@@ -47,12 +47,6 @@ export class SpriteCollection {
         this.floors = [];
         /**
          * @public
-         * @description Wall.
-         * @type {object}
-         */
-        this.wall = null;
-        /**
-         * @public
          * @description Items.
          * @type {object}
          */
@@ -87,7 +81,6 @@ export class SpriteCollection {
         this.loadBackgrounds();
         this.loadHeroes();
         this.loadFloors();
-        this.loadWall();
         //this.loadItems();
         //this.loadUI();
 
@@ -129,14 +122,6 @@ export class SpriteCollection {
         cnf.forEach(x => {
             this.floors.push(this.p.loadImage(x));
         });
-    }
-
-    /**
-      * @private
-      * @description Loads the sprites for the wall.
-      */
-    loadWall() {
-        this.wall = this.p.loadImage(this.config.wall);
     }
 
     /**

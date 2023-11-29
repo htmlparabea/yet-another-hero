@@ -33,9 +33,9 @@ export class Cell {
         /**
          * @private
          * @description Type of floor.
-         * @type {number}
+         * @type {number|null}
          */
-        this.floor = 0;
+        this.floor = null;
         /**
          * @private
          * @description Element in cell.
@@ -64,7 +64,7 @@ export class Cell {
      * @description Configures the cell as wall.
      */
     setAsWall() {
-        this.floor = -1;
+        this.floor = 0;
         this.element = null;
         this.isBlocked = true;
         this.isVisible = true;
@@ -82,6 +82,8 @@ export class Cell {
         this.isVisible = false;
     }
 
+
+    
     /**
      * @public
      * @description Sets the cell as element.
