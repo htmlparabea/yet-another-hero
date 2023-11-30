@@ -37,8 +37,7 @@ export class SpriteCollection {
          * @description Heroes.
          * @type {object}
          */
-        this.heroes = {
-        };
+        this.heroes = {};
         /**
          * @public
          * @description Floors.
@@ -50,14 +49,7 @@ export class SpriteCollection {
          * @description Items.
          * @type {object}
          */
-        this.items = {
-            "coin": null,
-            "column": null,
-            "hammer": null,
-            "ladder": null,
-            "potion": null,
-            "skull": null
-        };
+        this.items = {};
 
         /**
          * @public
@@ -81,7 +73,7 @@ export class SpriteCollection {
         this.loadBackgrounds();
         this.loadHeroes();
         this.loadFloors();
-        //this.loadItems();
+        this.loadItems();
         //this.loadUI();
 
     }
@@ -130,13 +122,14 @@ export class SpriteCollection {
      */
     loadItems() {
         let cnf = this.config.items;
-        let sprites = this.items;
-        sprites.coin = this.loadImage(cnf.coin);
-        sprites.column = this.loadImage(cnf.column);
-        sprites.hammer = this.loadImage(cnf.hammer);
-        sprites.ladder = this.loadImage(cnf.ladder);
-        sprites.potion = this.loadImage(cnf.potion);
-        sprites.skull = this.loadImage(cnf.skull);
+        let keys = Object.keys(cnf);
+        let spt = {};
+
+        for (let key of keys) {
+            spt[key] = cnf[key].map(x => this.p.loadImage(x));
+        }
+
+        this.items = spt;
     }
 
 
@@ -186,6 +179,11 @@ export class SpriteCollection {
         return this.heroes[id][state][i];
     }
 
+    getItem(id, frame) {
+        const tmp = this.items[id];
+        let i = frame % tmp.length;
+        return tmp[i];
+    }
 
     /**
      * @private

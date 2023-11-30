@@ -45,6 +45,11 @@ import floors_4 from "./sprites/floors/floor-4.png";
 import floors_5 from "./sprites/floors/floor-5.png";
 import floors_6 from "./sprites/floors/floor-6.png";
 import floors_7 from "./sprites/floors/floor-7.png";
+import items_column from "./sprites/items/column.png";
+import items_coin_f0 from "./sprites/items/coin-f0.png";
+import items_coin_f1 from "./sprites/items/coin-f1.png";
+import items_coin_f2 from "./sprites/items/coin-f2.png";
+import items_coin_f3 from "./sprites/items/coin-f3.png";
 
 /**
  * Contains the configuration.
@@ -132,12 +137,15 @@ export const config = {
             floors_7
         ],
         "items": {
-            "coin": "items/coin.png",
-            "column": "walls/wall.png",
-            "hammer": "items/hammer.png",
-            "ladder": "items/ladder.png",
-            "potion": "items/flask-red-big.png",
-            "skull": "items/skull.png"
+            "coin": [
+                items_coin_f0,
+                items_coin_f1,
+                items_coin_f2,
+                items_coin_f3
+            ],
+            "column": [
+                items_column
+            ]
         },
 
         "ui": {
@@ -178,7 +186,7 @@ export const config = {
         "luck": 5
     }],
     "board": {
-        "cellSize": 64,
+        "cellSize": 16,
         "grid": {
             "rows": 13,
             "cols": 31

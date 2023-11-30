@@ -1,7 +1,7 @@
 import { Cell } from "./cell.js";
 import { Hero } from "./hero.js";
-//import { CoinFactory } from "./coin-factory.js";
-//import { ColumnFactory } from "./column-factory.js";
+import { Coin } from "./coin.js";
+import { Column } from "./column.js";
 //import { HammerFactory } from "./hammer-factory.js";
 //import { LadderFactory } from "./ladder-factory.js";
 //import { PotionFactory } from "./potion-factory.js";
@@ -71,8 +71,7 @@ export class Board {
         this.initGrid();
         this.setupWalls();
         this.setupFloor();
-
-        //this.setupItems(config.items);
+        this.setupItems();
         //this.setupHero(config.hero);
         //this.updateStatus();
     }
@@ -126,13 +125,13 @@ export class Board {
 
     /**
      * @private
-     * @description Configures the elements at the castle.
-     * @param {object} config Config for item.
+     * @description Configures the items at the castle.
      */
-    setupItems(config) {
-        // this.setupColumns(config.columns);
+    setupItems() {
+        this.setupColumns();
+        this.setupCoins();
+
         // this.setupItem(new LadderFactory(this.sprites, config.ladders));
-        // this.setupItem(new CoinFactory(this.sprites, config.coins));
         // this.setupItem(new PotionFactory(this.sprites, config.potions));
         // this.setupItem(new HammerFactory(this.sprites, config.hammers));
         // this.setupItem(new SkullFactory(this.sprites, config.skulls));
@@ -141,22 +140,34 @@ export class Board {
     /**
     * @private
     * @description Configures the columns.
-    * @param {object} config Configuration data.
     */
-    setupColumns(config) {
+    setupColumns() {
+        const cnf = this.config.items.columns;
+
         var rows = [...Array(this.maxRow - 4).keys()]
             .map(m => m + 2)
-            .filter(m => Math.random() < config.rowDensity);
+            .filter(() => Math.random() < cnf.rowDensity);
         var cols = [...Array(this.maxCol - 4).keys()]
             .map(m => m + 2)
-            .filter(m => Math.random() < config.colDensity);
+            .filter(() => Math.random() < cnf.colDensity);
 
         const f = (p) => {
             return rows.includes(p.row) && cols.includes(p.col);
         };
 
-        let factory = new ColumnFactory(this.sprites, config);
-        this.cells.filter(p => f(p)).forEach(p => factory.createItem(p));
+        this.cells.filter(p => f(p)).forEach(p => Column.create(p));
+    }
+
+    /**
+     * @private
+     * @description Configures the coins.
+     */
+    setupCoins() {
+        const cnf = this.config.items.coins;
+        const cells = this.cells.filter(p => !p.isBlocked && !p.element);
+
+        this.getIndexes(cells.length, cnf.density)
+            .forEach(index => Coin.create(cells[index]));
     }
 
     /**

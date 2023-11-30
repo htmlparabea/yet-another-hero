@@ -4,20 +4,20 @@ import { Hero } from "./hero.js";
 /**
  * @public
  * @abstract
- * @description Defines an element contained in a cell.
+ * @description Defines an item contained in a cell.
  */
-export class Element {
+export class Item {
 
     /**
-     * @public
+     * @protected
      * @description Class constructor.
-     * @param {string} id Element ID.
+     * @param {string} id Item ID.
      */
     constructor(id) {
         /**
          * @public
          * @readonly
-         * @description Element Id.
+         * @description Item Id.
          * @type {string}
          */
         this.id = id;
@@ -26,7 +26,7 @@ export class Element {
     /**
      * @public
      * @abstract
-     * @description Checks if the cell is visitable given the current element.
+     * @description Checks if the cell is visitable given the current item.
      * @param {Hero} hero Hero.
      * @returns {boolean} True if the hero can visit the cell or false otherwise.
      */
@@ -38,9 +38,9 @@ export class Element {
     /**
      * @public
      * @abstract
-     * @description Applies the element over the hero.
+     * @description Applies the item over the hero.
      * @param {Hero} hero Hero.
-     * @returns {boolean} True if remove element from cell or false if not.
+     * @returns {boolean} True if remove item from cell or false otherwise.
      */
     // eslint-disable-next-line no-unused-vars
     apply(hero) {

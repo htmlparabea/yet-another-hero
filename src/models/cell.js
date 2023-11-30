@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import { Element } from "./element.js";
+import { Item } from "./item.js";
 // eslint-disable-next-line no-unused-vars
 import { Hero } from "./hero.js";
 
@@ -38,10 +38,10 @@ export class Cell {
         this.floor = null;
         /**
          * @private
-         * @description Element in cell.
-         * @type {Element|null}
+         * @description Item in cell.
+         * @type {Item|null}
          */
-        this.element = null;
+        this.item = null;
 
         this.isBlocked = false;
         /**
@@ -65,7 +65,7 @@ export class Cell {
      */
     setAsWall() {
         this.floor = 0;
-        this.element = null;
+        this.item = null;
         this.isBlocked = true;
         this.isVisible = true;
     }
@@ -77,22 +77,18 @@ export class Cell {
      */
     setAsFloor(floor) {
         this.floor = floor;
-        this.element = null;
+        this.item = null;
         this.isBlocked = false;
         this.isVisible = false;
     }
 
-
-    
     /**
      * @public
-     * @description Sets the cell as element.
-     * @param {Element} element Element in cell.
+     * @description Sets the item in the cell.
+     * @param {Item} item Item.
      */
-    setAsElement(element) {
-        this.element = element;
-        this.isBlocked = false;
-        this.isVisible = false;
+    setItem(item) {
+        this.item = item;
     }
 
     // getFloorSprite() {
@@ -110,13 +106,13 @@ export class Cell {
      * @returns {boolean} True if the hero moves to the cell or false otherwise.
      */
     moveHero(hero) {
-        if (this.element != null && !this.element.isVisitable(hero)) return false;
+        if (this.item != null && !this.item.isVisitable(hero)) return false;
 
         hero.move(this.row, this.col);
 
-        if (this.element != null) {
-            if (this.element.apply(hero)) {
-                this.element = null;
+        if (this.item != null) {
+            if (this.item.apply(hero)) {
+                this.item = null;
             }
         }
 

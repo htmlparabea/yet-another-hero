@@ -55,21 +55,27 @@ export class BoardScreen extends Screen {
     /**
      * @inheritdoc
      */
-    // eslint-disable-next-line no-unused-vars
     draw(frame) {
-        this.drawCells();
+        this.drawCells(frame);
     }
 
-    drawCells() {
+    drawCells(frame) {
         let cellSize = this.board.config.cellSize;
 
         for (let cell of this.board.cells) {
             let xPos = cell.col * cellSize;
             let yPos = 64 + (cell.row * cellSize);
 
-            let sprite = this.sprites.floors[cell.floor];// cell.getFloorSprite();
+            let sprite = this.sprites.floors[cell.floor];
             if (sprite != null) {
                 this.p.image(sprite, xPos, yPos, cellSize, cellSize);
+            }
+
+            if (cell.item) {
+                this.p.imageMode(this.p.CENTER);
+                sprite = this.sprites.getItem(cell.item.id, frame);
+                this.p.image(sprite, xPos + 0.5 * cellSize, yPos + 0.5 * cellSize);
+                this.p.imageMode(this.p.CORNER);
             }
 
             // sprite = cell.getElementSprite(0);
